@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Price Master</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="./static/img/favicon.ico" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <br><br><br><br>
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img src="{{ response['MainImageUrl'] }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{ response['Name'] }} | {{ response['Brand'] }}</h5>
+                <p class="card-text">Vous devez essayer de trouver le juste prix de cet article. Tentez votre chance dans le formulaire si-dessous.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <br><br><br>
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center">
+
+            <form action="/" method="POST">
+                <div class="form-group">
+                  <input name="testedPrice" type="essai" class="form-control" id="exampleInputEmail1" aria-describedby="essaiId" placeholder="Quel est le prix de cet article ?">
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-success">Tester</button>
+                    <div class="p-4"></div>
+                    <button type="button" class="btn btn-danger">Recommencer une nouvelle partie</button>
+                </div>
+              </form>
+
+        </div>
+    </div>
+
+    <br><br>
+
+
+
+
+    <br>
+
+
+    <div class="container-fluid">
+        <div class="d-flex justify-content-center">
+
+            <div class="alert alert-primary" role="alert"> Essai n° {{ nbreTestArr[0] }} | Vous avez tapé : {{ lastTestedPrice }} | Résultat : {{ lastResultat }} </div>
+
+        </div>
+    </div>
+
+
+    <br><br>
+
+    <div class="container">
+        <div class="d-flex justify-content-center">
+
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">Valeur</th>
+                    <th scope="col">Résultat</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% if nbreTest != 0 %}
+                    {% for result in resultArray %}
+                      <tr>
+                        <th scope="row">{{ nbreTestArr[loop.index] }}</th>
+                        <td>{{ testedpriceArr[loop.index] }}</td>
+                        <td>{{ resultArray[loop.index] }}</td>
+                      </tr>
+                    {% endfor %}
+                  {% endif %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+
+
+    <br><br><br>
+
+
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
